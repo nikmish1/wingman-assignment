@@ -4,6 +4,7 @@ import { IoChatbubble } from "react-icons/io5";
 import { PiCoinsDuotone, PiCoinFill, PiPiggyBankFill } from "react-icons/pi";
 import { GlanceCard } from "./GlanceCard";
 import { Card } from "@/components/Card";
+import { Select } from "@/components/Select";
 
 export default function Home() {
   const GlanceCards = [
@@ -46,8 +47,12 @@ export default function Home() {
   ];
   return (
     <Card className="m-4">
-      <div className="flex flex-col gap-4">
-        <div className="text-2xl font-medium font-semibold">At a glance</div>
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-row justify-between items-center">
+          <div className="text-2xl  font-semibold">At a glance</div>
+          <Select />
+        </div>
+
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:gap-8">
           {GlanceCards.map((card, index) => (
             <GlanceCard key={index} {...card} />
