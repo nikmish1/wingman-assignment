@@ -4,7 +4,6 @@ type CardProps = {
   TitleIcon?: React.ElementType;
   title?: string;
   className?: string;
-  //TitleIcon?: React.ElementType;
 };
 
 export const Card = ({
