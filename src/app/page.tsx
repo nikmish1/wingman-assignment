@@ -3,6 +3,7 @@
 import { IoChatbubble } from "react-icons/io5";
 import { PiCoinsDuotone, PiCoinFill, PiPiggyBankFill } from "react-icons/pi";
 import { GlanceCard } from "./GlanceCard";
+import { Card } from "@/components/Card";
 
 export default function Home() {
   const GlanceCards = [
@@ -44,11 +45,16 @@ export default function Home() {
     },
   ];
   return (
-    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:gap-8 p-4">
-      {GlanceCards.map((card, index) => (
-        <GlanceCard key={index} {...card} />
-      ))}
-    </div>
+    <Card className="m-4">
+      <div className="flex flex-col gap-4">
+        <div className="text-2xl font-medium font-semibold">At a glance</div>
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:gap-8">
+          {GlanceCards.map((card, index) => (
+            <GlanceCard key={index} {...card} />
+          ))}
+        </div>
+      </div>
+    </Card>
 
     // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     //   <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
