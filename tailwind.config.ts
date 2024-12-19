@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "gray-550": "#667085",
+      },
+      borderRadius: {
+        "2.5xl": "1.25rem",
       },
     },
   },
