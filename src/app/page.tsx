@@ -1,25 +1,53 @@
 "use client";
 
-import { Card } from "@/components/Card";
 import { IoChatbubble } from "react-icons/io5";
-import { HiMiniArrowTrendingUp } from "react-icons/hi2";
+import { PiCoinsDuotone, PiCoinFill, PiPiggyBankFill } from "react-icons/pi";
 import { GlanceCard } from "./GlanceCard";
 
 export default function Home() {
+  const GlanceCards = [
+    {
+      title: "CONSULTAIONS",
+      percentageChange: 15,
+      value: "24",
+      icon: IoChatbubble,
+    },
+    {
+      title: "CONSULTAIONS",
+      percentageChange: -16,
+      value: "24",
+      icon: IoChatbubble,
+    },
+    {
+      title: "CONSULTAIONS",
+      percentageChange: -16,
+      value: "24",
+      icon: IoChatbubble,
+    },
+    {
+      title: "TOTAL SALES VALUE",
+      percentageChange: 15,
+      value: "$2,400",
+      icon: PiCoinsDuotone,
+    },
+    {
+      title: "AVG ORDER VALUE",
+      percentageChange: 15,
+      value: "$240",
+      icon: PiCoinFill,
+    },
+    {
+      title: "COMMISION PAID",
+      percentageChange: -16,
+      value: "$240",
+      icon: PiPiggyBankFill,
+    },
+  ];
   return (
-    <div>
-      <GlanceCard
-        title="CONSULTAIONS"
-        percentageChange={15}
-        value={24}
-        icon={IoChatbubble}
-      />
-      <GlanceCard
-        title="CONSULTAIONS"
-        percentageChange={-16}
-        value={24}
-        icon={IoChatbubble}
-      />
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:gap-8 p-4">
+      {GlanceCards.map((card, index) => (
+        <GlanceCard key={index} {...card} />
+      ))}
     </div>
 
     // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
