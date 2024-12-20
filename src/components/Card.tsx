@@ -18,15 +18,16 @@ const Card = ({
     <div
       className={`p-[24] border border-gray-300 rounded-2.5xl shadow-sm ${className}`}
     >
-      <div className="flex items-center gap-2 mb-6">
-        {TitleIcon && <TitleIcon className={titleIconColor} />}
-        {title && (
+      {title && (
+        <div className="flex items-center gap-2 mb-6">
+          {TitleIcon && <TitleIcon className={titleIconColor} />}
+
           <div className="text-lg font-semibold leading-7 tracking-wide">
             {" "}
             {title}{" "}
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div>{children}</div>
     </div>
