@@ -1,3 +1,4 @@
+import { INCREASE_DESCREASE } from "@/constants";
 import {
   HiMiniArrowTrendingDown,
   HiMiniArrowTrendingUp,
@@ -17,7 +18,11 @@ type ForcastInfoProps = {
   percentageChange: number;
 };
 const ForcastInfo = ({ percentageChange }: ForcastInfoProps) => {
-  const increaseOrDecrease = percentageChange > 0 ? "increase" : "decrease";
+  const increaseOrDecrease =
+    percentageChange > 0
+      ? INCREASE_DESCREASE.INCREASE
+      : INCREASE_DESCREASE.DECREASE;
+
   const ArraowIcon =
     percentageChange > 0 ? HiMiniArrowTrendingUp : HiMiniArrowTrendingDown;
 

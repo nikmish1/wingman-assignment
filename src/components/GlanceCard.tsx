@@ -1,4 +1,5 @@
 import { Card } from "@/components";
+import { INCREASE_DESCREASE } from "@/constants";
 import {
   HiMiniArrowTrendingDown,
   HiMiniArrowTrendingUp,
@@ -17,7 +18,11 @@ export const GlanceCard = ({
   icon,
 }: GlanceCardProps) => {
   const arrowColor = percentageChange > 0 ? "text-green-500" : "text-red-500";
-  const increaseOrDecrease = percentageChange > 0 ? "increase" : "decrease";
+  const increaseOrDecrease =
+    percentageChange > 0
+      ? INCREASE_DESCREASE.INCREASE
+      : INCREASE_DESCREASE.DECREASE;
+
   const ArraowIcon =
     percentageChange > 0 ? HiMiniArrowTrendingUp : HiMiniArrowTrendingDown;
 
