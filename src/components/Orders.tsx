@@ -1,7 +1,12 @@
 import Image from "next/image";
-import Card from "./Card";
 import DataTable from "./DataTable";
 import Heading from "./Heading";
+import {
+  format,
+  hoursToMilliseconds,
+  millisecondsToHours,
+  millisecondsToMinutes,
+} from "date-fns";
 
 const columnDefinations = [
   {
@@ -23,16 +28,51 @@ const columnDefinations = [
     label: "Product",
   },
   {
+    key: "date",
+    label: "Date",
+    cellRenderer: (value) => {
+      return (
+        <>
+          <div>{format(new Date(value), "dd MMM `yyyy")}</div>
+          <div className="text-gray-550 text-sm">
+            {format(new Date(value), "hh:mm a")}
+          </div>
+        </>
+      );
+    },
+  },
+  {
     key: "timespent",
     label: "Time Spent",
+    cellRenderer: (milliseconds: number) => {
+      //   const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+      //   const minutes = Math.floor(
+      //     (milliseconds % (1000 * 60 * 60)) / (1000 * 60)
+      //   );
+
+      const hours = millisecondsToHours(milliseconds);
+      const remainingMilliseconds = milliseconds % hoursToMilliseconds(hours);
+
+      return (
+        <div>{`${hours}h ${millisecondsToMinutes(
+          remainingMilliseconds
+        )}m`}</div>
+      );
+    },
   },
   {
     key: "ordervalue",
     label: "Order Value",
+    cellRenderer: (value) => {
+      return <>${value}</>;
+    },
   },
   {
     key: "commission",
     label: "Commission",
+    cellRenderer: (value) => {
+      return <div className="font-bold">${value}</div>;
+    },
   },
 ];
 
