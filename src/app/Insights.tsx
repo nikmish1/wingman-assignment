@@ -5,11 +5,11 @@ import ForcastInfo from "@/components/ForcastInfo";
 
 export const Insights = () => {
   return (
-    <div className="grid rid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid lg:grid-cols-4 grid-cols-1 gap-4">
       <Card
         title="CONSULTAIONS"
         TitleIcon={IoChatbubble}
-        className="p-4 col-span-2"
+        className="p-4 lg:col-span-2"
       >
         <Chart.ComposedChart />
       </Card>

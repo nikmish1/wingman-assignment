@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Card from "./Card";
 import DataTable from "./DataTable";
 import Heading from "./Heading";
@@ -7,7 +8,17 @@ const columnDefinations = [
     key: "product",
     cellRenderer: (row) => {
       console.log("got row in cellRen", row);
-      return <div>{row.name}</div>;
+      return (
+        <div className="flex items-center gap-4">
+          <Image
+            src={row.image}
+            width={40}
+            height={40}
+            alt="Picture of the author"
+          />
+          <span>{row.name}</span>
+        </div>
+      );
     },
     label: "Product",
   },
@@ -32,7 +43,11 @@ const Orders = ({ orders }: OrdersProps) => {
   return (
     <>
       <Heading text="Orders" />
-      <DataTable rows={orders} columns={columnDefinations} />
+      <DataTable
+        rows={orders}
+        columns={columnDefinations}
+        className="border border-gray-300 rounded-2.5xl shadow-sm"
+      />
     </>
   );
 };

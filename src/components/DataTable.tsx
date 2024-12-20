@@ -16,9 +16,17 @@ type DataTableProps<T> = {
 const RenderRowData = ({ columns, row }) => {
   return columns.map((col) => {
     if (col.cellRenderer) {
-      return <td key={col.key}>{col.cellRenderer(row[col.key], row)}</td>;
+      return (
+        <td className="p-4" key={col.key}>
+          {col.cellRenderer(row[col.key], row)}
+        </td>
+      );
     }
-    return <td key={col.key}>{row[col.key]}</td>;
+    return (
+      <td className="p-4" key={col.key}>
+        {row[col.key]}
+      </td>
+    );
   });
 };
 const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
@@ -49,12 +57,18 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
   };
 
   return (
-    <div className="w-full">
-      <table className={`table-auto w-full ${className}`}>
-        <thead className="bg-gray-200">
+    <>
+      <table
+        className={`w-full table-auto border-separate overflow-hidden border-spacing-0 ${className}`}
+      >
+        <thead className="bg-[#f9fafb]">
           <tr className="text-left">
             {columns.map((col) => (
-              <th key={col.key} onClick={() => handleSort(col.key)}>
+              <th
+                key={col.key}
+                onClick={() => handleSort(col.key)}
+                className="p-4 text-slate-500"
+              >
                 {col.label}
                 {sortConfig.key === col.key &&
                   (sortConfig.direction === "asc" ? "↑" : "↓")}
@@ -65,7 +79,7 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
         <tbody className="bg-white">
           {currentRows.map((row) => {
             return (
-              <tr key={row.id} className="border-b">
+              <tr key={row.id} className="border-b last:border-none">
                 <RenderRowData columns={columns} row={row} />
               </tr>
             );
@@ -94,7 +108,7 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
           Next
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
