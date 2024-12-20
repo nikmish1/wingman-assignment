@@ -1,9 +1,19 @@
 import dynamic from "next/dynamic";
 
-const Chart = dynamic(() => import("./Charts"), { ssr: false });
+const ComposedChart = dynamic(() => import("./ComposedChart"), { ssr: false });
+const BarChart = dynamic(() => import("./BarChart"), { ssr: false });
 
-const ChartWrapper = () => {
-  return <Chart />;
+const ComposedChartWrapper = () => {
+  return <ComposedChart />;
 };
 
-export default ChartWrapper;
+const BarChartWrapper = () => {
+  return <BarChart />;
+};
+
+const ChartWrappers = {
+  ComposedChart: ComposedChartWrapper,
+  BarChart: BarChartWrapper,
+};
+
+export default ChartWrappers;
