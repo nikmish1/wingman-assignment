@@ -1,6 +1,6 @@
 "use client";
 
-import { GlanceCard } from "./GlanceCard";
+import { GlanceCard } from "../components/GlanceCard";
 import { Card, Heading, Select } from "@/components";
 
 import { IoChatbubble } from "react-icons/io5";

@@ -25,7 +25,7 @@ const data = [
 
 const Chart = () => {
   return (
-    <ResponsiveContainer width="100%" height="100%" aspect={4.0 / 3.0}>
+    <ResponsiveContainer width="100%" height={350}>
       <BarChart
         width={900}
         height={300}
@@ -38,8 +38,8 @@ const Chart = () => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name" axisLine={false} />
+        <YAxis axisLine={false} />
         <Tooltip />
         <Legend />
         <Bar
