@@ -16,16 +16,9 @@ type DataTableProps<T> = {
 
 const RenderRowData = ({ columns, row }) => {
   return columns.map((col) => {
-    if (col.cellRenderer) {
-      return (
-        <td className="p-4" key={col.key}>
-          {col.cellRenderer(row[col.key], row)}
-        </td>
-      );
-    }
     return (
       <td className="p-4" key={col.key}>
-        {row[col.key]}
+        {col.cellRenderer ? col.cellRenderer(row[col.key], row) : row[col.key]}
       </td>
     );
   });

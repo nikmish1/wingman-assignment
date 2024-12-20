@@ -1,78 +1,48 @@
-import Image from "next/image";
 import DataTable from "./DataTable";
 import Heading from "./Heading";
-import {
-  format,
-  hoursToMilliseconds,
-  millisecondsToHours,
-  millisecondsToMinutes,
-} from "date-fns";
+
+import { TimeSpentRenderer } from "./renderers/TimeSpentRenderer";
+import { DateRenderer } from "./renderers/DateRenderer";
+import { Product } from "@/types";
+import { ProductRenderer } from "./renderers/ProductRenderer";
+import { OrderValueRenderer } from "./renderers/OrderValueRenderer";
+import { CommissionRenderer } from "./renderers/CommissionRenderer";
+import { ChatUrlRenderer } from "./renderers/ChatUrlRenderer";
 
 const columnDefinations = [
   {
     key: "product",
-    cellRenderer: (row) => {
-      console.log("got row in cellRen", row);
-      return (
-        <div className="flex items-center gap-4">
-          <Image
-            src={row.image}
-            width={40}
-            height={40}
-            alt="Picture of the author"
-          />
-          <span>{row.name}</span>
-        </div>
-      );
-    },
+    cellRenderer: (value: Product) => <ProductRenderer value={value} />,
     label: "Product",
   },
   {
     key: "date",
     label: "Date",
-    cellRenderer: (value) => {
-      return (
-        <>
-          <div>{format(new Date(value), "dd MMM `yyyy")}</div>
-          <div className="text-gray-550 text-sm">
-            {format(new Date(value), "hh:mm a")}
-          </div>
-        </>
-      );
+    cellRenderer: (value: string) => {
+      return <DateRenderer value={value} />;
     },
   },
   {
     key: "timespent",
     label: "Time Spent",
-    cellRenderer: (milliseconds: number) => {
-      //   const hours = Math.floor(milliseconds / (1000 * 60 * 60));
-      //   const minutes = Math.floor(
-      //     (milliseconds % (1000 * 60 * 60)) / (1000 * 60)
-      //   );
-
-      const hours = millisecondsToHours(milliseconds);
-      const remainingMilliseconds = milliseconds % hoursToMilliseconds(hours);
-
-      return (
-        <div>{`${hours}h ${millisecondsToMinutes(
-          remainingMilliseconds
-        )}m`}</div>
-      );
-    },
+    cellRenderer: (value: number) => <TimeSpentRenderer value={value} />,
   },
   {
     key: "ordervalue",
     label: "Order Value",
-    cellRenderer: (value) => {
-      return <>${value}</>;
-    },
+    cellRenderer: (value: string) => <OrderValueRenderer value={value} />,
   },
   {
     key: "commission",
     label: "Commission",
-    cellRenderer: (value) => {
-      return <div className="font-bold">${value}</div>;
+    cellRenderer: (value: string) => {
+      return <CommissionRenderer value={value} />;
     },
+  },
+  {
+    key: "chatUrl",
+    label: "",
+    cellRenderer: () => <ChatUrlRenderer />,
   },
 ];
 
