@@ -1,12 +1,11 @@
 "use client";
 
-import { Card } from "@/components/Card";
-import { Heading } from "@/components/Heading";
-import { Select } from "@/components/Select";
 import { GlanceCard } from "./GlanceCard";
+import { Card, Heading, Select } from "@/components";
 
 import { IoChatbubble } from "react-icons/io5";
 import { PiCoinsDuotone, PiCoinFill, PiPiggyBankFill } from "react-icons/pi";
+import { Insights } from "./Insights";
 
 const GlanceCards = [
   {
@@ -62,6 +61,7 @@ export const Dashboard = () => {
           ))}
         </div>
         <Heading text="Insights" />
+        <Insights />
       </div>
     </Card>
   );

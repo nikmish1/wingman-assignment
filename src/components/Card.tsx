@@ -6,7 +6,7 @@ type CardProps = {
   className?: string;
 };
 
-export const Card = ({
+const Card = ({
   title = "",
   TitleIcon,
   children,
@@ -30,3 +30,5 @@ export const Card = ({
     </div>
   );
 };
+
+export default Card;

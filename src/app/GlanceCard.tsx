@@ -1,5 +1,6 @@
 "use client";
-import { Card } from "@/components/Card";
+
+import { Card } from "@/components";
 import {
   HiMiniArrowTrendingDown,
   HiMiniArrowTrendingUp,
