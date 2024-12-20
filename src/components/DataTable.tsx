@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 type Column<T> = {
   key: keyof T;
@@ -56,6 +57,16 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
     }));
   };
 
+  const handlePrevious = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) =>
+      Math.min(prev + 1, Math.ceil(rows.length / rowsPerPage))
+    );
+  };
+
   return (
     <>
       <table
@@ -67,7 +78,7 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
               <th
                 key={col.key}
                 onClick={() => handleSort(col.key)}
-                className="p-4 text-slate-500"
+                className="p-4 text-slate-400 font-normal text-sm cursor-pointer"
               >
                 {col.label}
                 {sortConfig.key === col.key &&
@@ -87,26 +98,20 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
         </tbody>
       </table>
 
-      <div>
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
+      <div className="flex justify-between items-center mt-4">
+        <Button onClick={handlePrevious} disabled={currentPage === 1}>
           Previous
-        </button>
-        <span>
-          Page {currentPage} of {Math.ceil(rows.length / rowsPerPage)}
+        </Button>
+        <span className="text-gray-500">
+          Page <span>{currentPage}</span> of{" "}
+          <span>{Math.ceil(rows.length / rowsPerPage)}</span>
         </span>
-        <button
-          onClick={() =>
-            setCurrentPage((prev) =>
-              Math.min(prev + 1, Math.ceil(rows.length / rowsPerPage))
-            )
-          }
+        <Button
+          onClick={handleNext}
           disabled={currentPage === Math.ceil(rows.length / rowsPerPage)}
         >
           Next
-        </button>
+        </Button>
       </div>
     </>
   );

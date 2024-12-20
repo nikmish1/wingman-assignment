@@ -9,8 +9,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#1D4ED8", // Blue
+        secondary: "#6B7280", // Gray
+        error: "#DC2626", // Red
         "gray-550": "#667085",
       },
       borderRadius: {
