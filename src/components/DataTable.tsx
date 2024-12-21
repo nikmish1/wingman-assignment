@@ -73,9 +73,9 @@ const DataTable = ({ rows, columns, className }: DataTableProps) => {
   };
 
   return (
-    <>
+    <div className="overflow-auto">
       <table
-        className={`w-full table-auto border-separate overflow-hidden border-spacing-0 ${className}`}
+        className={`w-full table-auto border-separate border-spacing-0 overflow-scroll ${className}`}
       >
         <thead className="bg-[#f9fafb]">
           <tr className="text-left">
@@ -118,7 +118,7 @@ const DataTable = ({ rows, columns, className }: DataTableProps) => {
           Next
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 
