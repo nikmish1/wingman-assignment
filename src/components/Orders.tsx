@@ -4,14 +4,14 @@ import Heading from "./Heading";
 
 import { TimeSpentRenderer } from "./renderers/TimeSpentRenderer";
 import { DateRenderer } from "./renderers/DateRenderer";
-import { Product } from "@/types";
+import { NumberColumn, Product, ProductColumn, StringColumn } from "@/types";
 import { ProductRenderer } from "./renderers/ProductRenderer";
 import { OrderValueRenderer } from "./renderers/OrderValueRenderer";
 import { CommissionRenderer } from "./renderers/CommissionRenderer";
 import { ChatUrlRenderer } from "./renderers/ChatUrlRenderer";
 import Card from "./Card";
 
-const columnDefinations = [
+const columnDefinations: (StringColumn | ProductColumn | NumberColumn)[] = [
   {
     key: "product",
     cellRenderer: (value: Product) => <ProductRenderer value={value} />,
