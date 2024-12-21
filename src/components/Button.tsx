@@ -18,11 +18,10 @@ const Button = ({
     [BUTTON_VARIANTS.SECONDARY]: "bg-secondary",
     [BUTTON_VARIANTS.ERROR]: "bg-error",
   }[type];
-
+  const disabledClass = disabled ? "bg-disabled text-black" : "";
   return (
     <button
-      className={`mr-2 ${buttonVaraintClass} text-white px-4 py-2 rounded`}
-      //   onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      className={`mr-2 ${buttonVaraintClass} ${disabledClass} text-white px-4 py-2 rounded`}
       onClick={onClick}
       disabled={disabled}
     >

@@ -9,6 +9,7 @@ import { ProductRenderer } from "./renderers/ProductRenderer";
 import { OrderValueRenderer } from "./renderers/OrderValueRenderer";
 import { CommissionRenderer } from "./renderers/CommissionRenderer";
 import { ChatUrlRenderer } from "./renderers/ChatUrlRenderer";
+import Card from "./Card";
 
 const columnDefinations = [
   {
@@ -52,14 +53,14 @@ type OrdersProps = {
 };
 const Orders = ({ orders }: OrdersProps) => {
   return (
-    <>
-      <Heading text="Orders" />
+    <Card className="m-4 flex flex-col" title="">
+      <Heading className="my-2 font-medium text-3xl">Orders</Heading>
       <DataTable
         rows={orders}
         columns={columnDefinations}
         className="border border-gray-300 rounded-2.5xl shadow-sm"
       />
-    </>
+    </Card>
   );
 };
 

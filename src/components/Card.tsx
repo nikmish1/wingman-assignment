@@ -23,8 +23,7 @@ const Card = ({
           {TitleIcon && <TitleIcon className={titleIconColor} />}
 
           <div className="text-lg font-semibold leading-7 tracking-wide">
-            {" "}
-            {title}{" "}
+            {title}
           </div>
         </div>
       )}

@@ -56,7 +56,7 @@ export const Dashboard = ({ orders }: DashboardProps) => {
     <Card className="m-4">
       <div className="flex flex-col gap-8">
         <div className="flex flex-row justify-between items-center">
-          <Heading text="At a Glance" />
+          <Heading>At a Glance</Heading>
           <Select />
         </div>
 
@@ -65,7 +65,7 @@ export const Dashboard = ({ orders }: DashboardProps) => {
             <GlanceCard key={index} {...card} />
           ))}
         </div>
-        <Heading text="Insights" />
+        <Heading>Insights</Heading>
         <Insights />
         <Orders orders={orders} />
       </div>

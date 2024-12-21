@@ -28,13 +28,10 @@ export const Header = () => {
 
   const onSelect = (index: number) => {
     setSelected(index);
-    const selectedHeader = HeaderItems[index].url;
-    console.log(selectedHeader);
-    // navigate(selectedHeader);
   };
 
   return (
-    <header className="flex gap-4 p-4 m-4 border-b-2 border-[#DCDFE4]">
+    <header className="flex gap-4 p-4 my-4 border-b-2 border-[#DCDFE4]">
       {HeaderItems.map((item, index) => (
         <Link href={item.url} key={index}>
           <Pill
