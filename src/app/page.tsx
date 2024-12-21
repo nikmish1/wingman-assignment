@@ -1,8 +1,20 @@
+"use client";
+
 import { Dashboard } from "./Dashboard";
 
-export default async function Home() {
+import { useEffect, useState } from "react";
+
+async function fetchOrders() {
   const data = await fetch("http://localhost:3000/api/orders");
-  const orders = await data.json();
+  return data.json();
+}
+
+export default function Home() {
+  const [orders, setOrders] = useState<[]>([]);
+
+  useEffect(() => {
+    fetchOrders().then(setOrders);
+  }, []);
 
   return <Dashboard orders={orders} />;
 }
