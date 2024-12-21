@@ -32,8 +32,9 @@ export const Header = () => {
     console.log(selectedHeader);
     // navigate(selectedHeader);
   };
+
   return (
-    <header className="flex gap-4 p-4">
+    <header className="flex gap-4 p-4 m-4 border-b-2 border-[#DCDFE4]">
       {HeaderItems.map((item, index) => (
         <Pill
           key={index}
