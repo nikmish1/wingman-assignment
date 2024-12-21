@@ -1,20 +1,10 @@
 "use client";
 
+import useFetchOrders from "@/hooks/useFetchOrders";
 import { Dashboard } from "./Dashboard";
 
-import { useEffect, useState } from "react";
-
-async function fetchOrders() {
-  const data = await fetch(`${process.env.NEXT_API_URL}/api/orders`);
-  return data.json();
-}
-
 export default function Home() {
-  const [orders, setOrders] = useState<[]>([]);
+  const { data, loading } = useFetchOrders();
 
-  useEffect(() => {
-    fetchOrders().then(setOrders);
-  }, []);
-
-  return <Dashboard orders={orders} />;
+  return loading ? <div>Loading...</div> : <Dashboard orders={data as []} />;
 }
