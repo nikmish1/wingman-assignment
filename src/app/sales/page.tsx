@@ -9,7 +9,7 @@ const Sales = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const data = await fetch("http://localhost:3000/api/orders");
+      const data = await fetch(`${process.env.NEXT_API_URL}/api/orders`);
       const orders = await data.json();
       setOrders(orders);
     };

@@ -5,7 +5,7 @@ import { Dashboard } from "./Dashboard";
 import { useEffect, useState } from "react";
 
 async function fetchOrders() {
-  const data = await fetch("http://localhost:3000/api/orders");
+  const data = await fetch(`${process.env.NEXT_API_URL}/api/orders`);
   return data.json();
 }
 
