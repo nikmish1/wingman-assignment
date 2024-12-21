@@ -2,7 +2,6 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Legend,
   Rectangle,
   ResponsiveContainer,
   Tooltip,
@@ -41,7 +40,6 @@ const Chart = () => {
         <XAxis dataKey="name" axisLine={false} />
         <YAxis axisLine={false} />
         <Tooltip />
-        {/* <Legend /> */}
         <Bar
           dataKey="orderplaced"
           fill="#CCFBEF"
