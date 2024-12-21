@@ -1,32 +1,44 @@
 import React, { useState } from "react";
+import { StringColumn, ProductColumn, NumberColumn } from "@/types";
 import Button from "./Button";
 
-type Column<T> = {
-  key: keyof T;
-  label: string;
-  render?: (value: T[keyof T], row: T) => React.ReactNode;
-};
+type Column = StringColumn | ProductColumn | NumberColumn;
 
-type DataTableProps<T> = {
+type DataTableProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   rows: Record<string, any>[];
-  columns: Column<T>[];
+  columns: Column[];
   className?: string;
 };
 
-const RenderRowData = ({ columns, row }) => {
+const RenderRowData = ({
+  columns,
+  row,
+}: {
+  columns: Column[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  row: Record<string, any>;
+}) => {
   return columns.map((col) => {
+    const value = row[col.key] as never;
     return (
       <td className="p-4" key={col.key}>
-        {col.cellRenderer ? col.cellRenderer(row[col.key], row) : row[col.key]}
+        {col.cellRenderer ? col.cellRenderer(value, row) : (value as string)}
       </td>
     );
   });
 };
-const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
+
+const DataTable = ({ rows, columns, className }: DataTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(5);
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+  const [sortConfig, setSortConfig] = useState<{
+    key: string | null;
+    direction: "asc" | "desc";
+  }>({
+    key: null,
+    direction: "asc",
+  });
 
   const sortedRows = [...rows].sort((a, b) => {
     if (!sortConfig.key) return 0;
@@ -40,7 +52,7 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
   const startIndex = (currentPage - 1) * rowsPerPage;
   const currentRows = sortedRows.slice(startIndex, startIndex + rowsPerPage);
 
-  const handleSort = (key) => {
+  const handleSort = (key: string) => {
     setSortConfig((prevConfig) => ({
       key,
       direction:
@@ -75,7 +87,7 @@ const DataTable = <T,>({ rows, columns, className }: DataTableProps<T>) => {
               >
                 {col.label}
                 {sortConfig.key === col.key &&
-                  (sortConfig.direction === "asc" ? "↑" : "↓")}
+                  (sortConfig.direction === "asc" ? " ↑" : " ↓")}
               </th>
             ))}
           </tr>
