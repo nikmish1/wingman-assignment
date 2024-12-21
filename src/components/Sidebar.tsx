@@ -69,7 +69,6 @@ export const Sidebar = () => {
       {SideBarMenuDirections.map((direction) => {
         const bottomClass = direction === "bottom" ? "mt-auto" : "";
 
-        //const topClass = direction === "top" ? "mb-auto" : "";
         return (
           <div key={direction} className={`flex flex-col ${bottomClass}`}>
             {SideBarMenu[direction].map((item) => {

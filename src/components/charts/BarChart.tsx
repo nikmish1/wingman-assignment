@@ -41,7 +41,7 @@ const Chart = () => {
         <XAxis dataKey="name" axisLine={false} />
         <YAxis axisLine={false} />
         <Tooltip />
-        <Legend />
+        {/* <Legend /> */}
         <Bar
           dataKey="orderplaced"
           fill="#CCFBEF"

@@ -1,3 +1,4 @@
+"use client";
 import DataTable from "./DataTable";
 import Heading from "./Heading";
 
