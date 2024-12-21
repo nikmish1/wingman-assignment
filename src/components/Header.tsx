@@ -36,16 +36,18 @@ export const Header = () => {
   return (
     <header className="flex gap-4 p-4 m-4 border-b-2 border-[#DCDFE4]">
       {HeaderItems.map((item, index) => (
-        <Pill
-          key={index}
-          selected={index === selected}
-          onClick={() => onSelect(index)}
-        >
-          <div className="flex gap-2 items-center">
-            <item.icon className="text-2xl" />
-            <Link href={item.url}>{item.title}</Link>
-          </div>
-        </Pill>
+        <Link href={item.url} key={index}>
+          <Pill
+            key={index}
+            selected={index === selected}
+            onClick={() => onSelect(index)}
+          >
+            <div className="flex gap-2 items-center">
+              <item.icon className="text-2xl" />
+              {item.title}
+            </div>
+          </Pill>
+        </Link>
       ))}
     </header>
   );
