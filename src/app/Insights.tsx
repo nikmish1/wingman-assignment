@@ -26,7 +26,7 @@ export const Insights = () => {
         titleIconColor="text-white"
         className="bg-gradient-to-br from-[#2ab9a4] via-[#2fb5a2]  to-[#109f8c] rounded-2xl shadow-lg text-white"
       >
-        <div className="mt-4 space-y-4">
+        <div className="flex flex-col gap-6 mt-4 space-y-4">
           <ForcastInfo percentageChange={20} />
           <ForcastInfo percentageChange={-20} />
         </div>

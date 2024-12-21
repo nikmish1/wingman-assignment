@@ -30,7 +30,7 @@ const ForcastInfo = ({ percentageChange }: ForcastInfoProps) => {
 
   return (
     <div className="flex flex-col">
-      <div className="text-6xl font-semibold flex h-16">
+      <div className="text-6xl lg:text-5xl font-medium flex h-16">
         <span> {percentageChangeValue}</span>
         <span className="ml-2">
           <ArraowIcon className="text-4xl" />
