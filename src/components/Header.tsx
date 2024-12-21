@@ -35,7 +35,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="flex gap-4 p-4 my-4 border-b-2 border-[#DCDFE4]">
+    <header className="flex gap-4 p-4 my-4 border-b-2 border-[#DCDFE4] overflow-auto">
       {HeaderItems.map((item, index) => (
         <Link href={item.url} key={index}>
           <Pill
