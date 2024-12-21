@@ -16,7 +16,7 @@ const Card = ({
 }: PropsWithChildren<CardProps>) => {
   return (
     <div
-      className={`p-[24] border border-gray-300 rounded-2.5xl shadow-sm ${className}`}
+      className={`p-6 border border-gray-300 rounded-2.5xl shadow-sm ${className}`}
     >
       {title && (
         <div className="flex items-center gap-2 mb-6">
