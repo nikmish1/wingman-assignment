@@ -44,7 +44,6 @@ export const getChatResponse = async ({ query }: { query: string }) => {
     modelName: "gpt-3.5-turbo-1106",
   });
   const result = await model.call(input);
-  console.log("result", result);
 
   try {
     const output = await parser.parse(result);

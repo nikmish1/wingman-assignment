@@ -5,6 +5,7 @@ import { PiChartPieSliceFill, PiChatCircleTextFill } from "react-icons/pi";
 import { FaTag } from "react-icons/fa6";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const HeaderItems = [
   {
@@ -24,7 +25,10 @@ const HeaderItems = [
   },
 ];
 export const Header = () => {
-  const [selected, setSelected] = useState(0);
+  const path = usePathname();
+
+  const selectedIndex = HeaderItems.findIndex((item) => item.url === path);
+  const [selected, setSelected] = useState(selectedIndex ?? 0);
 
   const onSelect = (index: number) => {
     setSelected(index);
