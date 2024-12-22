@@ -50,11 +50,13 @@ const columnDefinations: (StringColumn | ProductColumn | NumberColumn)[] = [
 
 type OrdersProps = {
   orders: [];
+  loading?: boolean;
 };
-const Orders = ({ orders }: OrdersProps) => {
+const Orders = ({ orders, loading }: OrdersProps) => {
   return (
     <Card className="m-4 flex flex-col" title="">
       <Heading className="my-2 font-medium text-3xl">Orders</Heading>
+      {loading && <div>Loading...</div>}
       <DataTable
         rows={orders}
         columns={columnDefinations}

@@ -7,6 +7,7 @@ import { IoChatbubble } from "react-icons/io5";
 import { PiCoinsDuotone, PiCoinFill, PiPiggyBankFill } from "react-icons/pi";
 import { Insights } from "./Insights";
 import Orders from "@/components/Orders";
+import useFetchOrders from "@/hooks/useFetchOrders";
 
 const GlanceCards = [
   {
@@ -47,11 +48,8 @@ const GlanceCards = [
   },
 ];
 
-type DashboardProps = {
-  orders: [];
-};
-
-export const Dashboard = ({ orders }: DashboardProps) => {
+export const Dashboard = () => {
+  const { data: orders, loading } = useFetchOrders();
   return (
     <Card className="m-4">
       <div className="flex flex-col gap-8">
@@ -67,7 +65,7 @@ export const Dashboard = ({ orders }: DashboardProps) => {
         </div>
         <Heading>Insights</Heading>
         <Insights />
-        <Orders orders={orders} />
+        <Orders orders={orders as []} loading={loading} />
       </div>
     </Card>
   );
