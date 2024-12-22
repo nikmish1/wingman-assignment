@@ -53,7 +53,7 @@ const SideBarMenuItem = ({
     : "";
   return (
     <div
-      className={`flex flex-row items-center justify-center rounded-lg m-2 h-9 w-9 ${selectedClass}`}
+      className={`flex flex-row text-2xl items-center justify-center rounded-lg m-2 h-9 w-9 ${selectedClass}`}
     >
       {logo}
     </div>
