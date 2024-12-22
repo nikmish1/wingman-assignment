@@ -13,7 +13,7 @@ const useFetchOrders = () => {
           throw new Error("Network response was not ok");
         }
         const result = await response.json();
-        setData(result);
+        setData(result.data);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setError(`An error occurred: ${error.message}`);
