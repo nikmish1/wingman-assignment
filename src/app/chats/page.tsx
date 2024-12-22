@@ -10,11 +10,13 @@ const Chat = () => {
   );
   const [input, setInput] = useState("");
 
+  const [pending, setPending] = useState<boolean>();
+
   const handleSend = () => {
     if (input.trim()) {
       setMessages([...messages, { sender: "Me", text: input }]);
       setInput("");
-
+      setPending(true);
       fetch("/api/chat", {
         method: "POST",
         body: JSON.stringify({ message: input }),
@@ -24,6 +26,7 @@ const Chat = () => {
       })
         .then((res) => res.json())
         .then(({ data }) => {
+          setPending(false);
           setMessages((prev) => {
             return [...prev, { sender: "Bot", text: data[0].botResponse }];
           });
@@ -41,7 +44,7 @@ const Chat = () => {
     }
   };
   return (
-    <Card title="How can I help you today ?" className="m-4">
+    <Card title="How can I help you today ?" className="m-4 p-4">
       <div className="flex flex-col gap-60">
         {messages.length > 0 && (
           <div className="border-b-2 flex flex-col gap-7 border-[#DCDFE4] p-4 bg-slate-100">
@@ -53,17 +56,20 @@ const Chat = () => {
           </div>
         )}
 
-        <div className="flex flex-col lg:flex-row gap-4 p-4">
-          <Input
-            className="lg:flex-grow"
-            type="text"
-            value={input}
-            onChange={onInputChanged}
-            onKeyDown={handleKeyDown}
-          />
-          <Button disabled={false} onClick={handleSend}>
-            Send
-          </Button>
+        <div className="flex flex-col text-sm text-gray-500">
+          <div>{pending ? "Bot writing..." : ""}</div>
+          <div className="flex flex-col lg:flex-row gap-4">
+            <Input
+              className="lg:flex-grow"
+              type="text"
+              value={input}
+              onChange={onInputChanged}
+              onKeyDown={handleKeyDown}
+            />
+            <Button disabled={false} onClick={handleSend}>
+              Send
+            </Button>
+          </div>
         </div>
       </div>
     </Card>
