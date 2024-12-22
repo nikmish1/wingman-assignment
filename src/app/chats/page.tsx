@@ -53,8 +53,9 @@ const Chat = () => {
           </div>
         )}
 
-        <div className="flex gap-4 bg-slate-100  p-4">
+        <div className="flex flex-col lg:flex-row gap-4 p-4">
           <Input
+            className="lg:flex-grow"
             type="text"
             value={input}
             onChange={onInputChanged}
