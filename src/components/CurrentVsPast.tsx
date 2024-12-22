@@ -19,7 +19,7 @@ const CurrentVsPast = () => {
         >
           <span className="">{abbr.title}</span>
           <span
-            className={`w-7 h-[4px] rounded-lg self-center ${abbr.color}`}
+            className={`w-6 h-[4px] rounded-lg self-center ${abbr.color}`}
           ></span>
         </div>
       ))}
