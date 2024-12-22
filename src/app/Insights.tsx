@@ -2,6 +2,8 @@ import { Card, Chart } from "@/components";
 import { IoChatbubble } from "react-icons/io5";
 import { BsBarChartLineFill } from "react-icons/bs";
 import ForcastInfo from "@/components/ForcastInfo";
+import ConsultaionAbbrivation from "@/components/ConsultationAbbrivation";
+import CurrentVsPast from "@/components/CurrentVsPast";
 
 export const Insights = () => {
   return (
@@ -12,6 +14,21 @@ export const Insights = () => {
         className="p-4 lg:col-span-2"
       >
         <Chart.ComposedChart />
+        {/* <div className="flex flex-row gap-6 mt-4">
+          <div className="flex flex-row align-middle justify-start mt-4 gap-2">
+            <span className="">Incoming</span>
+            <span className="w-7 h-[4px] rounded-lg self-center bg-slate-400"></span>
+          </div>
+          <div className="flex flex-row align-middle justify-start mt-4 gap-2">
+            <span className="">Answered</span>
+            <span className="w-7 h-[4px] rounded-lg self-center bg-[#15B79F]"></span>
+          </div>
+          <div className="flex flex-row align-middle justify-start mt-4 gap-2">
+            <span className="">Expert online</span>
+            <span className="w-7 h-[4px] rounded-lg self-center bg-[#FFE587]"></span>
+          </div>
+        </div> */}
+        <ConsultaionAbbrivation />
       </Card>
       <Card
         title="VS PAST PERIOD"
@@ -19,6 +36,7 @@ export const Insights = () => {
         className="p-4 col-span-1"
       >
         <Chart.BarChart />
+        <CurrentVsPast />
       </Card>
       <Card
         title="FORCAST"
