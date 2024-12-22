@@ -21,4 +21,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployed on Vercel
 [wingman-assignment](https://wingman-assignment-eight.vercel.app/)
-[Wingman app Video tour][https://www.youtube.com/watch?v=eGvNNxpUTsc]
+
+[Wingman app video tour](https://www.youtube.com/watch?v=eGvNNxpUTsc)
